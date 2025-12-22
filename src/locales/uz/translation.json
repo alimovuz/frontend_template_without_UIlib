@@ -1,0 +1,16 @@
+{
+    "Dashboard":"Bosh sahifa",
+    "Settings":"Sozlamalar",
+    "Profile":"Profil",
+    "Logout":"Chiqish",
+    "WelcomeMessage":"Xush kelibsiz, foydalanuvchi!",
+    "Language":"Til",
+    "Theme":"Mavzu",
+    "Notifications":"Bildirishnomalar",
+    "Help":"Yordam",
+    "Search":"Qidirish...",
+    "SaveChanges":"O'zgarishlarni saqlash",
+    "Cancel":"Bekor qilish",
+    "Loading":"Yuklanmoqda...",
+    "ErrorMessage":"Xatolik yuz berdi. Iltimos, qayta urinib ko'ring."
+}

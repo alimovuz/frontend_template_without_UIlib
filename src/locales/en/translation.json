@@ -1,0 +1,16 @@
+{
+    "Dashboard":"Dashboard",
+    "Settings":"Settings",
+    "Profile":"Profile",
+    "Logout":"Logout",
+    "WelcomeMessage":"Welcome, user!",
+    "Language":"Language",
+    "Theme":"Theme",
+    "Notifications":"Notifications",
+    "Help":"Help",
+    "Search":"Search...",
+    "SaveChanges":"Save Changes",
+    "Cancel":"Cancel",
+    "Loading":"Loading...",
+    "ErrorMessage":"An error occurred. Please try again."
+}
