@@ -38,6 +38,7 @@ instance.interceptors.response.use(
             try {
                 if (!refreshToken){
                     window.location.href = '/login';
+                    localStorage.clear();
                     return Promise.reject(error);
                 }
                 const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/refresh`, {refreshToken})
