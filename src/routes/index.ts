@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import type { TypeRoutes } from "./type";
-import { Home, HomeIcon } from "lucide-react";
+import { HomeIcon } from "lucide-react";
 const SignIn = lazy(() => import("../pages/auth/login"));
 const NotFound = lazy(() => import("../pages/auth/not-found"));
 const Dashboard = lazy(() => import("../pages/dashboard"));
