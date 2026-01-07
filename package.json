@@ -1,10 +1,11 @@
 {
   "name": "frontend_template_with_shadcnui",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node build-meta.cjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -42,5 +43,6 @@
   },
   "resolutions": {
     "vite": "npm:rolldown-vite@7.2.5"
-  }
+  },
+  "build_date": 1767612427464
 }
