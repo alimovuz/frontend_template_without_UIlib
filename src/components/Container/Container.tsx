@@ -1,4 +1,4 @@
-import type { IContainer } from "../../types/container";
+import type { IContainer } from "./types";
 
 const Container: React.FC<IContainer> = ({children}) => {
 

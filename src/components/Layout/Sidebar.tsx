@@ -1,15 +1,8 @@
-import type { ComponentType, SVGProps } from "react"
 import type { TypeRoutes } from "@/routes/type"
-import checkPermission from "@/utils/check_permission"
-import checkRole from "@/utils/check_role"
+import checkPermission from "@/utils/checkPermission"
+import checkRole from "@/utils/checkRole"
 import useAuth from "@/hooks/useAuth"
-
-type MenuProp = {
-  key: string,
-  icon: ComponentType<SVGProps<SVGSVGElement>> | undefined,
-  label: string,
-  children?: MenuProp[]
-}
+import type { MenuProp } from "./types"
 
 const renderMenuItems = (menuItems: TypeRoutes[]): MenuProp[] => {
   const {permissions, role} = useAuth()

@@ -120,4 +120,7 @@
   body {
     @apply bg-background text-foreground;
   }
+  .input {
+    @apply border border-border p-2 w-full rounded flex justify-between relative
+  }
 }

@@ -1,9 +1,9 @@
 import { lazy } from "react";
 import type { TypeRoutes } from "./type";
 import { HomeIcon } from "lucide-react";
-const SignIn = lazy(() => import("../pages/auth/login/login"));
-const NotFound = lazy(() => import("../pages/auth/not-found/not-found"));
-const Dashboard = lazy(() => import("../pages/dashboard/dashboard"));
+const SignIn = lazy(() => import("../pages/auth/Login/SignIn"));
+const NotFound = lazy(() => import("../pages/auth/NotFound/NotFound"));
+const Dashboard = lazy(() => import("../pages/Dashboard/Dashboard"));
 
 const _routes: Array<TypeRoutes> = [
   {
