@@ -1,12 +1,12 @@
 import { Suspense, useMemo, type ReactNode } from "react";
 import type { TypeRoutes } from "./type";
-import { _routes, sidebarRoutes } from ".";
+import { _routes, sidebarRoutes } from "./routes";
 import checkPermission from "../utils/check_permission";
 import checkRole from "../utils/check_role";
 import { createBrowserRouter, Navigate, RouterProvider, type RouteObject } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import Layout from "../components/layout";
-import Loader from "@/components/loader";
+import Layout from "../components/layout/layout";
+import Loader from "@/components/loader/loader";
 
 const createComponent = (Component: React.ComponentType): ReactNode => (
   <Suspense fallback={<Loader />}>

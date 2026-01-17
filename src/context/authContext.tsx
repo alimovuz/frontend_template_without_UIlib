@@ -9,7 +9,7 @@ const initialState: IAuthState = {
   currentUser: null,
   role: null,
   permissions: [],
-  isAuthenticated: true,
+  isAuthenticated: false,
   isLoading: true,
 };
 
@@ -43,7 +43,7 @@ const AuthProvider: React.FC<IAuthProvider> = ({ children }) => {
           dispatch({ type: "LOGOUT" });
         }
       } else {
-        // dispatch({ type: "LOGOUT" });
+        dispatch({ type: "LOGOUT" });
       }
 
       dispatch({ type: "SET_LOADING", payload: false });

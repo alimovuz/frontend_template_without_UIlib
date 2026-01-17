@@ -1,9 +1,9 @@
-import type { SVGProps } from "react"
+import type { ComponentType, LazyExoticComponent, SVGProps } from "react"
 
 type TypeRoutesSubMenu = {
     name: string
     path: string
-    component: React.ComponentType<SVGProps<SVGSVGElement>>
+    component: LazyExoticComponent<ComponentType>
     config: {
         permission: string,
         icon?: React.ComponentType<SVGProps<SVGSVGElement>>

@@ -8,8 +8,7 @@ const authReducer = (state: IAuthState, action: AuthAction): IAuthState => {
         currentUser: action.payload.user,
         role: action.payload.role,
         permissions: action.payload.permissions,
-        isAuthenticated: true,
-        isLoading: false,
+        isAuthenticated: true
       };
     
     case "SET_LOADING":

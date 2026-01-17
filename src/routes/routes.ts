@@ -1,9 +1,9 @@
 import { lazy } from "react";
 import type { TypeRoutes } from "./type";
 import { HomeIcon } from "lucide-react";
-const SignIn = lazy(() => import("../pages/auth/login"));
-const NotFound = lazy(() => import("../pages/auth/not-found"));
-const Dashboard = lazy(() => import("../pages/dashboard"));
+const SignIn = lazy(() => import("../pages/auth/login/login"));
+const NotFound = lazy(() => import("../pages/auth/not-found/not-found"));
+const Dashboard = lazy(() => import("../pages/dashboard/dashboard"));
 
 const _routes: Array<TypeRoutes> = [
   {
@@ -20,7 +20,7 @@ const _routes: Array<TypeRoutes> = [
 
 const sidebarRoutes: Array<TypeRoutes> = [
   {
-    name: "Dashboard 1",
+    name: "Dashboard",
     path: "/dashboard",
     component: Dashboard,
     config: {
@@ -30,28 +30,6 @@ const sidebarRoutes: Array<TypeRoutes> = [
       isMenu: true,
       allowed_roles: [],
     }
-  },
- {
-    name: "Dashboard 2",
-    path: "/dashboard2",
-    component: Dashboard,
-    config: {
-      permission: "*",
-      structure: "layout",
-      isMenu: true,
-      allowed_roles: [],
-    },
-  }, 
-  {
-    name: "Dashboard 3",
-    path: "/dashboard3",
-    component: Dashboard,
-    config: {
-      permission: "*",
-      structure: "layout",
-      isMenu: true,
-      allowed_roles: [],
-    },
   },
   {
     name: "Not Found",
