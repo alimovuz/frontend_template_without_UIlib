@@ -52,20 +52,21 @@ const AuthProvider: React.FC<IAuthProvider> = ({ children }) => {
   }, []);
 
   const login = async (username: string, password: string): Promise<boolean> => {
+    dispatch({ type: "SET_LOADING", payload: true })
     try {
       const response = await AuthService.login(username, password);
       localStorage.setItem("accessToken", response.access_token);
       localStorage.setItem("refreshToken", response.refresh_token);
       
       dispatch({
-        type: "LOGIN_SUCCESS",
+        type: "SET_USER",
         payload: {
           user: response.user,
           role: response.user.role,
           permissions: response.user.permissions,
         },
       });
-      
+      dispatch({ type: "SET_LOADING", payload: false })
       return true;
     } catch (error) {
       console.error("Login error:", error);

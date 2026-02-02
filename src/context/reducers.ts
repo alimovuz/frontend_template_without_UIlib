@@ -17,15 +17,6 @@ const authReducer = (state: IAuthState, action: AuthAction): IAuthState => {
         isLoading: action.payload,
       };
     
-    case "LOGIN_SUCCESS":
-      return {
-        ...state,
-        currentUser: action.payload.user,
-        role: action.payload.role,
-        permissions: action.payload.permissions,
-        isAuthenticated: true,
-      };
-    
     case "LOGOUT":
       return {
         ...state,

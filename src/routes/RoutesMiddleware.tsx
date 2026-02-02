@@ -55,11 +55,15 @@ const createRoutes = (isAuthenticated: boolean, permissions: string[], role: str
 };
 
 const RoutesMiddleware = () => {
-  const { isAuthenticated, permissions, role } = useAuth();
-
+  const { isAuthenticated, permissions, role, isLoading } = useAuth();
+  
   const router = useMemo(() => {
     return createBrowserRouter(createRoutes(isAuthenticated, permissions, role));
   }, [isAuthenticated]);
+
+  if (isLoading) {
+    return <Loader/>
+  }
 
   return <RouterProvider router={router} />;
 };

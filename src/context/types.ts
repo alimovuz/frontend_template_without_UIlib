@@ -21,6 +21,6 @@ interface IAuthState {
   isLoading: boolean;
 }
 
-type AuthAction = { type: "SET_USER"; payload: { user: any; role: string; permissions: string[] } } | { type: "SET_LOADING"; payload: boolean } | { type: "LOGOUT" } | { type: "LOGIN_SUCCESS"; payload: { user: any; role: string; permissions: string[] } };
+type AuthAction = { type: "SET_USER"; payload: { user: any; role: string; permissions: string[] } } | { type: "SET_LOADING"; payload: boolean } | { type: "LOGOUT" };
 
 export type { IAuthContext, IAuthState, AuthAction, IAuthProvider };
