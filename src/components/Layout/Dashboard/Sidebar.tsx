@@ -2,7 +2,7 @@ import type { TypeRoutes } from "@/routes/type"
 import checkPermission from "@/utils/checkPermission"
 import checkRole from "@/utils/checkRole"
 import useAuth from "@/hooks/useAuth"
-import type { MenuProp } from "./types"
+import type { MenuProp } from "../types";
 
 const renderMenuItems = (menuItems: TypeRoutes[]): MenuProp[] => {
   const {permissions, role} = useAuth()

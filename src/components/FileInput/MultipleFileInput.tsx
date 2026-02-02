@@ -4,35 +4,17 @@ import { cn } from "@/lib/utils";
 import { truncate } from "@/utils/truncate";
 import type { CustomFileInputMultipleProps, FileWithId } from "./types";
 
-export const CustomFileInputMultiple: React.FC<CustomFileInputMultipleProps> = ({
-  label,
-  touched,
-  error,
-  name,
-  className,
-  placeholder,
-  onChange,
-  value,
-  accept,
-  labelClassName,
-  multiple
-}) => {
+export const CustomFileInputMultiple: React.FC<CustomFileInputMultipleProps> = ({ label, touched, error, name, className, placeholder, onChange, value, accept, labelClassName, multiple}) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const displayValue = Array.isArray(value)
-    ? value
-        .map((file: File | FileWithId) => {
+    ? value.map((file: File | FileWithId) => {
           if ('id' in file && file.id) {
             return file.nomi || file.name || file.file_name;
           }
           return (file as File).name || (file as FileWithId).file_name;
         })
-        .join(", ")
-    : value instanceof File
-    ? value.name
-    : value === ""
-    ? placeholder
-    : value;
+        .join(", ") : value instanceof File ? value.name : value === "" ? placeholder : value;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
