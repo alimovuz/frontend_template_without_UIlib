@@ -5,8 +5,8 @@ import checkPermission from "../utils/checkPermission";
 import checkRole from "../utils/checkRole";
 import { createBrowserRouter, Navigate, RouterProvider, type RouteObject } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import Layout from "../components/Layout/Layout";
 import Loader from "@/components/Loader/Loader";
+import Layout from "@/components/Layout/Dashboard/Layout";
 
 const createComponent = (Component: React.ComponentType): ReactNode => (
   <Suspense fallback={<Loader />}>
