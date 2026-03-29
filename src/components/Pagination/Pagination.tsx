@@ -49,9 +49,9 @@ export const UniversalPagination = ({
         writeToUrl("page", page);
     };
 
-    const handlePerPageChange = (perPage: number) => {
-        writeToUrl("limit", perPage);
-    };
+    // const handlePerPageChange = (perPage: number) => {
+    //     writeToUrl("limit", perPage);
+    // };
 
     return (
         <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">

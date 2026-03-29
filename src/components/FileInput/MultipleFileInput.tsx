@@ -3,8 +3,9 @@ import { useRef } from "react";
 import { cn } from "@/lib/utils";
 import { truncate } from "@/utils/truncate";
 import type { CustomFileInputMultipleProps, FileWithId } from "./types";
+import { getBase64 } from "@/utils/getBase64";
 
-export const CustomFileInputMultiple: React.FC<CustomFileInputMultipleProps> = ({ label, touched, error, name, className, placeholder, onChange, value, accept, labelClassName, multiple}) => {
+export const CustomFileInputMultiple: React.FC<CustomFileInputMultipleProps> = ({ label, touched, error, name, className, placeholder, onChange, value, accept, labelClassName, multiple, type}) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const displayValue = Array.isArray(value)
@@ -16,13 +17,26 @@ export const CustomFileInputMultiple: React.FC<CustomFileInputMultipleProps> = (
         })
         .join(", ") : value instanceof File ? value.name : value === "" ? placeholder : value;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    if (files) {
-      onChange(multiple ? Array.from(files) : [files[0]]);
-    } else {
-      onChange(null);
+    if (!files || files.length === 0) {
+      onChange(multiple ? [] : null);
+      return;
     }
+
+    if (type === "base64") {
+      // Base64 ga aylantirish
+      const promises = Array.from(files).map((file) => {
+        return getBase64(file)
+      });
+
+      const base64Strings = await Promise.all(promises);
+
+      onChange(multiple ? base64Strings : base64Strings[0]);
+    } else {
+      onChange(multiple ? Array.from(files) : files[0]);
+    }
+
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }

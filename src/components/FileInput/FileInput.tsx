@@ -5,6 +5,7 @@ import { truncate } from "@/utils/truncate";
 import { getBase64 } from "@/utils/getBase64";
 import { Upload } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 type FileOutputType = "base64" | "file";
 interface CustomFileInputProps
@@ -16,7 +17,7 @@ interface CustomFileInputProps
     error?: string;
     className?: string;
     name: string;
-    onFileChange: (name: string, value: string | File | null ) => void;
+    onFileChange: (name: string, value: {base64: string, name: string, size: any} | File | null ) => void;
     type?: FileOutputType
     value?: string;
     accept?: string;
@@ -26,6 +27,7 @@ interface CustomFileInputProps
 const CustomFileInput: FC<CustomFileInputProps> = ({ label, touched, error, name, className, placeholder, value, accept, labelClassName, onFileChange, isClear = false, type="file" }) => {
     const [file, setFile] = useState<File | null>(null);
     const inputRef = useRef<HTMLInputElement>(null);
+    const { t } = useTranslation()
 
     const handleClear = (e: MouseEvent<HTMLImageElement>) => {
         e.preventDefault();
@@ -34,7 +36,7 @@ const CustomFileInput: FC<CustomFileInputProps> = ({ label, touched, error, name
         if (inputRef.current) {
             inputRef.current.value = "";
         }
-        onFileChange(name, "");
+        onFileChange(name, null);
     };
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -42,8 +44,8 @@ const CustomFileInput: FC<CustomFileInputProps> = ({ label, touched, error, name
         if (selectedFile) {
             setFile(selectedFile);
             if (type === "base64") {
-                getBase64(selectedFile).then((base64: string) => {
-                    onFileChange(name, base64);
+                getBase64(selectedFile).then((response) => {
+                    onFileChange(name, response);
                 });            
             } else {
                 onFileChange(name, selectedFile)
@@ -60,13 +62,13 @@ const CustomFileInput: FC<CustomFileInputProps> = ({ label, touched, error, name
                 className={cn("input group", value ? "text-foreground" : "text-muted-foreground", className, touched && error ? "border-red-500!" : "")}>
                 <div className="flex items-center flex-1">
                     {file?.name ? (
-                        <span className="file-value mr-2">{truncate(file.name || placeholder || "", 25)}</span>
+                        <span className="file-value mr-2">{truncate(file.name || t(placeholder || "") || "", 25)}</span>
                     ) : value ? (
                         <Link className="text-blue-400 underline mr-2" target="_blank" to={`${import.meta.env.VITE_API_MEDIA}${value}`} >
-                            Yuklangan fayl
+                            {t("Yuklangan fayl")}
                         </Link>
                     ) : (
-                        <span className="placeholder text-[#9C9DA7] mr-2">{placeholder || "Fayl yuklang"}</span>
+                        <span className="placeholder text-[#9C9DA7] mr-2">{t(placeholder || "") || t("Fayl yuklang")}</span>
                     )}
                 </div>
 

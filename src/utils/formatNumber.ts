@@ -1,6 +1,6 @@
-export const formatNumber = (num: number, format?:string): string => {
-  return new Intl.NumberFormat('ru-RU', {
+export const formatNumber = (num: number | string, format?:string): string => {
+  return new Intl.NumberFormat(format || 'ru-RU', {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
-  }).format(num | 0);
+  }).format(num ? Number(num) : 0);
 };
